@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hex Value Clock</title>
+
+<!-- CSS -->
+<link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+<style type="text/css">
+	* {
+		font-family: 'Lato', sans-serif;
+	}
+
+	#time, #hex {
+		color: #fff;
+	}
+
+	div.container {
+		text-align: center;
+	}
+
+	div.container h1{
+		font-size: 96pt;
+	}
+</style>
+</head>
+
+<body onLoad="init()">
+	<div class="container">
+		<h1 id="time"></h1>
+		<br>
+		<h3 id="hex"></h3>
+	</div>
+</body>
+
+<!-- JS -->
+<script type="text/javascript">
+	function init() {
+		var date = new Date();
+		var h = date.getHours();
+		var m = date.getMinutes();
+		var s = date.getSeconds();
+
+		if(h < 10){ h = "0" + h; }
+		if(m < 10){ m = "0" + m; }
+		if(s < 10){ s = "0" + s; }
+
+		h.toString();
+		m.toString();
+		s.toString();
+
+		var hexVal = "#" + h + m + s;
+
+		document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+		document.getElementById('hex').innerHTML = hexVal;
+
+		document.body.style.background = hexVal;
+
+		setTimeout(function() {init();}, 1000);
+	}
+</script>
+</html>
